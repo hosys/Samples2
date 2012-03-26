@@ -1,0 +1,25 @@
+<snippet>
+    <content><![CDATA[
+<script>
+(function(){
+
+    var data = [
+        {
+            key1: { first: 'value1', second : 'value2' },
+            key2:'string1'
+        },{
+            key1: { first: 'value3', second : 'value4' },
+            key2:'string2'
+        }
+    ];
+
+})();
+</script>
+]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>snp01:</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <!-- <scope>source.python</scope> -->
+    <!-- Optional: Description to show in the menu -->
+    <description>Template01 - jQuery Snippet</description>
+</snippet>
