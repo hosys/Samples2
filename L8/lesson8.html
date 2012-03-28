@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+
+	<h1>My Awesome Post</h1>
+
+	<article>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate v
+		</p>
+			
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+			
+		<p>
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+			
+		<p>	
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		</p>
+	</article>
+	
+	
+
+	<div id="container">
+		<ul>
+			<li>
+				<label for="name">Name:</label>
+				<input type="name" id="name"> 
+			</li>
+			<li>
+				<label for="email">Email:</label>
+				<input type="email" id="email"> 
+			</li>
+			<li>
+				<label for="comments">WHat's Up</label>
+				<input type="comments" id="comments"> 
+			</li>
+			<li>
+				<input type="submit" id="submit"> 
+			</li>
+		</ul>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>
+	(function(){
+	
+	    $('html').addClass('js');
+
+	    var contactForm = {
+	    	init: function(){
+	    		$('<button></button>',{
+	    			text:'Contact Me'
+	    		})
+	    		.insertAfter('article:first')
+	    		.on('click',this.show());
+	    	},
+	    	show: function(){
+	    		contactForm.close.call(contactForm.container);
+	    		this.container.show();
+	    	},
+	    	close: function(){
+	    		$this = $(this);
+	    		$('<span class=close>X</span>')
+	    			.prependTo(this)
+	    			.om('click', function(){
+	    				$this.hide();
+	    			});
+	    	}
+	    };
+
+	    contactForm.init();
+	
+	})();
+	</script>
+</body>
+</html>
