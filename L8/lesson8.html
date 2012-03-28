@@ -3,12 +3,56 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<style>
+
+	body {
+		width: 600px;
+		margin: auto;
+		font-family: sans-serif;
+	}
+
+	#contact { 
+		background: #e3e3e3; 
+		padding: 1em 2em; 
+		position: relative;
+	}
+
+	.js #contact {
+		position: absolute;
+		top: 0;
+		width: inherit;
+		display: none;
+	}	
+
+	#contact h2 { margin-top: 0; }
+
+	#contact ul { padding: 0; }
+
+	#contact li { 
+		list-style: none;
+		margin-bottom: 1em;
+	}
+
+	/* Close button on form */
+	.close {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		font-weight: bold;
+		font-family: sans-serif;
+		cursor: pointer;
+	}	
+
+	/* Form inputs */
+	input, textarea { width: 100%; line-height: 2em;}
+	input[type=submit] { width: auto;  }
+	label { display: block; text-align: left; }
+
+	</style>
 </head>
 <body>
-
-	<h1>My Awesome Post</h1>
-
 	<article>
+		<h1>My Awesome Post</h1>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -42,6 +86,7 @@
 	
 
 	<div id="container">
+		<h2>Contact Me</h2>
 		<ul>
 			<li>
 				<label for="name">Name:</label>
