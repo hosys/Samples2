@@ -99,7 +99,7 @@
 				</li>
 				<li>
 					<label for="comments">WHat's Up</label>
-					<input type="comments" id="comments"> 
+					<textarea name="comments" id="comments" cols="30" rows="10"></textarea>				
 				</li>
 				<li>
 					<input type="submit" id="submit"> 
@@ -115,28 +115,53 @@
 	    $('html').addClass('js');
 
 	    var contactForm = {
-	    	init: function(){
-	    		$('<button></button>',{
-	    			text:'Contact Me'
+	    	container: $('#contact'),
+
+	    	config: {
+	    		effect: 'slideToggle',
+	    		speed:500
+	    	},
+
+	    	init: function(config){
+	    		$('<button></button>', {
+	    			text: 'Contact Me'
 	    		})
-	    		.insertAfter('article:first')
-	    		.on('click',this.show());
+		    		.insertAfter('article:first')
+		    		.on('click', this.show);
 	    	},
 	    	show: function(){
-	    		contactForm.close.call(contactForm.container);
-	    		this.container.show();
+	    		var cf = contactForm,
+	    			container = cf.container,
+	    			config = cf.config;
+
+	    		if (container.is(':hidden')) {
+	    			contactForm.close.call(container);
+	    			container[config.effect](config.speed);
+	    		};
+	    		
+	    		// console.log('showing');
 	    	},
 	    	close: function(){
-	    		$this = $(this);
-	    		$('<span class=close>X</span>')
+	    		var $this = $(this);
+
+	    		if ($this.find('span.close').length) return;
+
+
+
+	    		$('<span class=close>x</span>')
 	    			.prependTo(this)
-	    			.om('click', function(){
-	    				$this.hide();
+	    			.on('click', function(){
+	    				$this[contactForm.config.effect](500);
 	    			});
 	    	}
 	    };
 
-	    contactForm.init();
+	    contactForm.init({
+	    	effect: 'fadeToggle',
+	    	speed:2000
+	    });
+
+	    
 	
 	})();
 	</script>
