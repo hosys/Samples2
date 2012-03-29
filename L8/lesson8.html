@@ -123,6 +123,7 @@
 	    	},
 
 	    	init: function(config){
+	    		$.extend(this.config, config);
 	    		$('<button></button>', {
 	    			text: 'Contact Me'
 	    		})
@@ -142,7 +143,8 @@
 	    		// console.log('showing');
 	    	},
 	    	close: function(){
-	    		var $this = $(this);
+	    		var $this = $(this),
+	    			config = contactForm.config;;
 
 	    		if ($this.find('span.close').length) return;
 
@@ -151,14 +153,14 @@
 	    		$('<span class=close>x</span>')
 	    			.prependTo(this)
 	    			.on('click', function(){
-	    				$this[contactForm.config.effect](500);
+	    				$this[config.effect](config.speed);
 	    			});
 	    	}
 	    };
 
 	    contactForm.init({
 	    	effect: 'fadeToggle',
-	    	speed:2000
+	    	speed:300
 	    });
 
 	    
