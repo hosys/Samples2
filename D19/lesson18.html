@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>frag Template</title>
+</head>
+<body>
+
+	<!-- <a href="http://tutsplus.com/">CLick Me!</a> -->
+
+	<script type="tuts/template" id="blogTemplate">
+	<h2>{{title}}</h2>
+	<img src="{{thumbnail}}" alt="{{title}}">
+	</script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>
+	(function(){
+	
+	    var content = [
+	        {
+	            title: 'My awesome POST',
+	            thumbnail:'http://tutsplus.com/wp-content/uploads/2012/01/HTML5.png'
+	        },
+	        {
+	            title: 'My second awesome POST',
+	            thumbnail:'http://tutsplus.com/wp-content/uploads/2012/01/HowToRecordGreatMusic.png'
+	        }
+	    ],
+	    	template = $.trim( $('#blogTemplate').html() ),
+	    	frag = '';
+
+	    $.each(content, function(index,obj){
+	    	frag += template.replace( /{{title}}/ig, obj.title )
+	    						.replace( /{{thumbnail}}/ig, obj.thumbnail );
+	    	// console.log(temp);
+
+	    	// $(document.body).append(temp);
+
+	    });
+
+	    $('body').append(frag);
+	
+	})();
+	</script>
+	
+</body>
+</html>
