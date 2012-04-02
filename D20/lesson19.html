@@ -2,12 +2,64 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
-	<title></title>
+	<title>Mustache</title>
+	<style type="text/css">
+	h2 span {
+		color: gray;
+		font: 6em;
+	}
+	</style>
 </head>
 <body>
-	
+
+	<ul class="tweets">
+		<script id="template" type="text/x-handlebars-template">
+			{{#each this}}
+			<li>
+				<h2>{{fullName author}} - <span> {{age}}</span></h2>
+				<p>{{{tweet}}}</p>
+			</li>
+				{{#if quote}}
+					<h5>{{quote}}</h5>
+				{{else}}
+					<h5>nothing.....</h5>
+				{{/if}}
+			{{/each}}
+		</script>		
+	</ul>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.0.beta.6.js"></script>
+
+	<script>
+	(function(){
+	
+	    var data = [
+	    	{
+	            author: { first: 'Jeff', last: 'Bach', age: 41},
+	            tweet: 'Rockable Press produces many of the eBooks available in the Tuts+ Premium eBook library. At Rockable Press, we get a lot of emails from people around the world wanting to write a book for us. Some of them are a bit ‘spammy’, but for the most part we get really enthusiastic and sincere individuals who want to share their knowledge about certain topics with others, and to be honest, it’s quite flattering.',
+	            
+	            quote: '決して、ここにはでてこない努力。'
+	        },
+	        {
+	            author: { first: 'Michele', last: 'Ohle', age: 36},
+	            tweet: 'But that’s all happened since our launch. What you probably haven’t seen was all the work that leads up to a successful launch. My first task <strong>when coming on board Tuts+ Premium was to figure out a best process for producing video courses</strong>. We experimented with a lot of questions: A single or multiple instructor course? What kind of media works best? What format? What do you want to learn and how do you want to learn it?'
+	        }
+	    ];
+
+	    Handlebars.registerHelper('fullName', function(author){
+	    	return author.first + ' ' + author.last + '-' + author.age;
+	    });
+
+	    var template = Handlebars.compile( $('#template').html() );
+
+	    $('ul.tweets').append( template(data) );
+
+	    // console.log(temp);
+	
+	})();
+	</script>
+
 	
 </body>
 </html>
