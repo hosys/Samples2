@@ -13,7 +13,7 @@ Slider.prototype.transition = function( coords ){
 	this.container.animate({
 		'margin-left': coords || -( this.current * this.imgWidth )
 	});
-}
+};
 
 Slider.prototype.setCurrent = function( dir ){
 	var pos = this.current;
@@ -22,4 +22,4 @@ Slider.prototype.setCurrent = function( dir ){
 	this.current = (pos<0) ? this.imgsLen -1 : pos % this.imgsLen;
 
 	return pos;
-}
+};
