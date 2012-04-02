@@ -1,7 +1,21 @@
 <snippet>
     <content><![CDATA[
-<script id="template" type="text/x-handlebars-template">
-</script>
+<!-- // ex) dataAttr@author{first,last,age},tweet,quote -->
+<ul class="tweets">
+	<script id="template" type="text/x-handlebars-template">
+		{{#each this}}
+		<li>
+			<h2>{{fullName author}} - <span> {{age}}</span></h2>
+			<p>{{{tweet}}}</p>
+		</li>
+			{{#if quote}}
+				<h5>{{quote}}</h5>
+			{{else}}
+				<h5>nothing.....</h5>
+			{{/if}}
+		{{/each}}
+	</script>		
+</ul>
 ]]></content>
     <!-- Optional: Tab trigger to activate the snippet -->
     <tabTrigger>snp:bars</tabTrigger>
@@ -10,3 +24,5 @@
     <!-- Optional: Description to show in the menu -->
     <description>Template03 - jQuery Snippet</description>
 </snippet>
+
+
