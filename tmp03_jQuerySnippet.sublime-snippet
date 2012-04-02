@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+<script id="template" type="text/x-handlebars-template">
+</script>
+]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>snp:bars</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <!-- <scope>source.python</scope> -->
+    <!-- Optional: Description to show in the menu -->
+    <description>Template03 - jQuery Snippet</description>
+</snippet>
