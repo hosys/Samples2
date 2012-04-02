@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>The Twitter API</title>
+	<style type="text/css">
+	body { width: 600px; margin: auto; }
+	ul { list-style: none; }
+	li { padding-bottom: 1em; }
+	img { float: left; padding-right: 1em; }
+	a { text-decoration: none;  color: #333; }
+
+	</style>
+</head>
+<body>
+
+	<ul class="tweets">
+		<script id="tweets-template" type="text/x-handlebars-template">
+			{{#each this}}
+			<li>
+				<img src="{{thumbnail}}" alt="{{author}}">
+				<p><a href="{{url}}">{{tweet}}</a></p>
+			</li>
+			{{/each}}
+		</script>		
+	</ul>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.0.beta.6.js"></script>
+
+	<script>
+		(function(){
+			var Twitter = {
+				init:function( config ){
+					this.url = 'http://search.twitter.com/search.json?q=' + config.query + '&callback=?';
+					this.template = config.template;
+					this.container = config.container;
+					this.fetch();
+
+				},
+
+				attachTemplate: function(){
+					// console.log(this.tweets)
+
+					var template = Handlebars.compile(this.template);
+					this.container.append( template(this.tweets) );
+
+					// console.log(html);
+
+				},
+
+				fetch:function(){
+					// console.log(this.url);
+
+					var self = this;
+					$.getJSON(this.url, function(data){
+						// console.log(data);
+						self.tweets = $.map( data.results, function(tweet){
+							return {
+								author: tweet.from_user,
+								tweet: tweet.text,
+								thumbnail: tweet.profile_image_url,
+								url: 'http://twitter.com/' + tweet.from_user + '/status/' + tweet.id_str
+							}
+						});
+
+						// console.log(tweets);
+						self.attachTemplate();
+
+					});
+				}
+			};
+
+			Twitter.init({
+				template: $('#tweets-template').html(),
+				container: $('ul.tweets'),
+				query: 'Justin Bieber'
+			});
+
+		})();
+	</script>
+</body>
+</html>l
