@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+</head>
+<body>
+
+	<a href="about.html">Learn More</a>
+	<br>
+	<a href="contact.html">Contact Me</a>
+
+	<div class="wrap"></div>
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>
+		(function(){
+			var wrap = $('div.wrap')
+			$('a').on('click', function( e ){
+				var href = $(this).attr('href');
+
+				wrap.load( href + ' .container' );
+				e.preventDefault();
+			});
+		})();
+	</script>
+</body>
+</html>
