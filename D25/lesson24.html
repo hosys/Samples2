@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax POST</title>
+</head>
+<body>
+
+	<h1>Something Post</h1>
+
+	<form action="#">
+		<textarea id="content" name="content" cols="30" rows="10"></textarea>
+		<p><button type="submit">Save</button></p>
+	</form>
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script>
+		(function(){
+			$.post('load.php', function(data){
+				if (data) {
+					$('#content').val(data);
+				};
+			});
+
+			$('form').on('submit', function(e){
+				$.post( 'save.php', $(this).serialize(), function(response){
+					console.log(response);
+				} );
+				e.preventDefault();
+			});
+		})();
+	</script>
+
+</body>
+</html>
