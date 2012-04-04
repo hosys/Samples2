@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Custom Events</title>
+	<style type="text/css">
+	body { width: 600px; margin: auto; font-family: sans-serif; text-align: center; }
+	li { text-align: center; padding-bottom: 1em; }
+	</style>
+</head>
+<body>
+
+	<h1>Hi,THere</h1>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script>
+		(function( $ ){
+
+			var o = $({});
+
+			$.each({
+				trigger: 'publish',
+				on: 'subscribe',
+				off: 'unsubscribe'
+			}, function( key, val ) {
+				jQuery[val] = function(){
+					o[key].apply( o, arguments );
+				};
+			});
+		})( jQuery );
+
+		$.getJSON('http://search.twitter.com/search.json?q=dogs&callback=?',function( results ){
+			$.publish('twitter/results', results); //publish
+		});
+
+		$.subscribe('twitter/results', function(e, results){ //subscribe
+			// console.log(results);
+			$('body').html(
+				$.map(results.results, function(obj,index){
+					return '<li>' + obj.text + '</li>'
+				}).join('')
+			);
+		});
+
+			
+
+
+
+			// $('body').on('clickcrack', function(){
+			// 	console.log('clicked');
+			// });
+			// $('body').trigger('clickcrack');
+
+
+	</script>
+
+
+</body>
+</html>
