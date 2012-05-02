@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[
+(function(){}());
+]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>scri</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <!-- <scope>source.python</scope> -->
+    <!-- Optional: Description to show in the menu -->
+    <description>Template05 - inst_Func Snippet</description>
+</snippet>
+
+
