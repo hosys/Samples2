@@ -3,7 +3,7 @@
 (function(){}());
 ]]></content>
     <!-- Optional: Tab trigger to activate the snippet -->
-    <tabTrigger>scri</tabTrigger>
+    <tabTrigger>(fn)</tabTrigger>
     <!-- Optional: Scope the tab trigger will be active in -->
     <!-- <scope>source.python</scope> -->
     <!-- Optional: Description to show in the menu -->
